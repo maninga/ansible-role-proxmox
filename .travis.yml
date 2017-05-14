@@ -29,6 +29,7 @@ script:
 - ansible -m shell -a "journalctl --no-pager -xu pvedaemon.service" -i tests/inventory all
 - ansible -m shell -a "journalctl --no-pager -xu pve-cluster.service" -i tests/inventory all
 - ansible -m uri -a 'url=https://{{ inventory_hostname }}:8006 validate_certs=no' -i tests/inventory all
+- ansible -m shell -a "ls -lR /etc/pve/" -i tests/inventory all
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
